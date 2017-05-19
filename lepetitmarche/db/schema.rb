@@ -11,9 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519092727) do
+ActiveRecord::Schema.define(version: 20170519120221) do
+
+  create_table "ads", force: :cascade do |t|
+    t.string   "region"
+    t.string   "category"
+    t.string   "title"
+    t.text     "description"
+    t.float    "price"
+    t.string   "image"
+    t.string   "city"
+    t.integer  "userId"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "parent_category"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
+    t.string   "pseudo",                 default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -29,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170519092727) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["pseudo"], name: "index_users_on_pseudo", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
