@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  get 'ad/listAd'
+  root 'ad#listAd'
 
-  get 'ad/newAd'
+  get 'annonces', :to=>'ad#listAd', :as=> :listAd
 
-  get 'ad/findAd'
+  get 'ajouter', :to=>'ad#newAd', :as=> :createAd
 
-  get 'ad/modifyAd'
+  get 'rechercher', :to=>'ad#findAd', :as=> :findAd
 
-  get 'ad/deleteAd'
+  get 'modifier', :to=>'ad#modifyAd', :as=> :modifyAd
+
+  get 'supprimer', :to=>'ad#deleteAd', :as=> :deleteAd
+
+  #post 'formulaire', :to=>'forms#create', :as=> :formulaireP
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
