@@ -1,1 +1,21 @@
 <%= render 'layouts/header' %>
+
+<div class="container">
+  <h1>Annonces</h1>
+
+
+
+  <div class="row">
+    <% @ads.each do |ad| %>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= ad.title %></div>
+            <div class="panel-body">
+              <p><b><%= ad.price %></b></p>
+              <p><%= ad.description %></p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

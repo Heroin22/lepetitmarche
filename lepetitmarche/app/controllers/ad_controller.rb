@@ -1,5 +1,6 @@
 class AdController < ApplicationController
   def listAd
+    @ads = Ad.all
   end
 
   def newAd
