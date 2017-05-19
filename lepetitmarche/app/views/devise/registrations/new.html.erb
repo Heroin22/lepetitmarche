@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <h2>Inscription</h2>
+    <fieldset>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="control-group">
+          <!-- Pseudo -->
+          <label class="control-label"  for="pseudo">Pseudo</label>
+          <div class="controls">
+            <%= f.text_field :pseudo, autofocus: true %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Email -->
+          <label class="control-label"  for="email">Email</label>
+          <div class="controls">
+            <%= f.email_field :email %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password -->
+          <label class="control-label"  for="password">Mot de passe</label>
+          <div class="controls">
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <!-- Password -->
+          <label class="control-label"  for="password">Confirmation du mot de passe</label>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Inscription" %>
+        </div>
+      <% end %>
+    </fieldset>
+  </div>
+</div>
