@@ -8,9 +8,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-   def create
+   def sign_up_params
      params.require(:user).permit(:pseudo, :email, :password, :password_confirmation)
    end
+
+
 
   # GET /resource/edit
   # def edit
