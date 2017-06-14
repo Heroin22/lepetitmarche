@@ -4,6 +4,7 @@ class AdController < ApplicationController
   end
 
   def newAd
+
   end
 
   def findAd

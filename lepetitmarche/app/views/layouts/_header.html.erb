@@ -18,6 +18,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="<%= listAd_path %>">Annonces</a></li>
+          <% if user_signed_in? %>
+              <li><a href="<%= createAd_path %>">Nouvelle annonce</a></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
