@@ -1,3 +1,4 @@
+# encoding: utf-8
 <div class="container">
 
   <div class="well">
@@ -48,13 +49,18 @@
 
   <div class="row">
     <% @ads.each do |ad| %>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading"><%= ad.title %></div>
+        <div class="col-md-6">
+          <div class="panel panel-default panelPerso">
+            <div class="panel-heading"><a href="<%= detailAd_path %>?id=<%= ad.id %>"><%= ad.title %></a></div>
             <div class="panel-body">
-              <img src="" alt="image"/>
-              <br/>
-              <p style="text-align: right">Prix : <b><%= ad.price %> €</b></p>
+              <div class="col-md-6">
+                <p><img class="img-responsive center-block imgPersoPetit" src="/data/<%= ad.image %>" alt="image"/></p>
+              </div>
+              <div class="col-md-6">
+                <li class="list-group-item"><span class="glyphicon glyphicon-globe"></span> <b>Lieu : </b> <%= Department.find_by(departement_id: ad.region).departement_nom %> > <%= City.find_by(ville_id: ad.city).ville_nom_reel %></li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span> <b>Catégorie : </b><%= Category.find_by(id: ad.category).name %></li>
+                <li class="list-group-item"><span class="glyphicon glyphicon-piggy-bank"></span> <b>Prix : </b><%= ad.price %> €</li>
+              </div>
             </div>
           </div>
         </div>
