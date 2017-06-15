@@ -13,6 +13,18 @@ Rails.application.routes.draw do
 
   #post 'formulaire', :to=>'forms#create', :as=> :formulaireP
 
+  get 'annonces/trieDateUp' => 'ad#trieDateUp'
+
+  get 'annonces/trieDateDown' => 'ad#trieDateDown'
+
+  get 'annonces/triePriceDown' => 'ad#triePriceDown'
+
+  get 'annonces/triePriceUp' => 'ad#triePriceUp'
+
+  post 'annonces/search' => 'ad#search'
+
+  post 'annonces/getVilleByDep' => 'ad#getVilleByDep'
+
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

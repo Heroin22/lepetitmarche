@@ -10,43 +10,49 @@
 
       <div class="col-md-3">
         <div class="form-group">
-          <select class="form-control" id="sel1">
-            <option>Catégories</option>
-            <option>Automobile</option>
-            <option>3</option>
-            <option>4</option>
+          <select class="form-control" id="categories">
+            <option value="">Catégories</option>
+            <option value="2">Automobile</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
         </div>
       </div>
       <div class="col-md-3">
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">Rechercher</button>
+          <button type="submit" id="btn-search" class="btn btn-primary">Rechercher</button>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3">
-        <select class="form-control">
-          <option>Départements</option>
-          <option>Ille-et-Vilaine</option>
-          <option>Finistére</option>
-          <option>Manche</option>
-          <option>Calvados</option>
+        <select class="form-control" id="region">
+          <option value="">Départements</option>
+          <% @department.each do |dep| %>
+              <option value="<%= dep.departement_codes %>"><%= dep.departement_nom %></option>
+          <% end %>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="form-control">
-          <option>Villes</option>
-          <option>Ille-et-Vilaine</option>
-          <option>Finistére</option>
-          <option>Manche</option>
-          <option>Calvados</option>
+        <select class="form-control" id="ville">
+          <option value="">Villes</option>
+          <option value="1">Ille-et-Vilaine</option>
+          <option value="2">Finistére</option>
+          <option value="3">Manche</option>
+          <option value="4">Calvados</option>
         </select>
       </div>
     </div>
   </div>
-
   <div class="row">
+    <div class="col-md-12">
+      <div class="pull-right">
+        <button type="button" id="sort-date" class="btn btn-sort-date">Date <span class="glyphicon glyphicon-minus"></span></button>
+        <button type="button" id="sort-prix" class="btn btn-sort-prix">Prix <span class="glyphicon glyphicon-minus"></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="ad-show">
     <% @ads.each do |ad| %>
         <div class="col-md-4">
           <div class="panel panel-default">
