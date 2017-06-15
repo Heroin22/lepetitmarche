@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-2 col-md-offset-5">
+    <h2>Connexion</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field">
+          <label class="control-label"  for="email">Email </label></br>
+          <input type="email" class="form-control" id="user_email" name="user[email]" aria-describedby="emailHelp" autofocus="true" placeholder="Email">
+        </div>
+
+        <div class="field">
+          <label class="control-label"  for="password">Mot de passe </label>
+          <input type="password" class="form-control" id="user_password" name="user[password]" autocomplete="off" placeholder="Mot de passe">
+        </div>
+        </br>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Connexion</button>
+        </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+
+  </div>
+</div>
+
+

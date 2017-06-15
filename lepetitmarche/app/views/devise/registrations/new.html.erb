@@ -10,7 +10,7 @@
           <!-- Pseudo -->
           <label class="control-label"  for="pseudo">Pseudo</label>
           <div class="controls">
-            <%= f.text_field :pseudo%>
+            <input type="text" class="form-control" id="user_pseudo" name="user[pseudo]" autofocus="true" placeholder="pseudo">
           </div>
         </div>
 
@@ -18,7 +18,7 @@
           <!-- Email -->
           <label class="control-label"  for="email">Email</label>
           <div class="controls">
-            <%= f.email_field :email %>
+            <input type="email" class="form-control" id="user_email" name="user[email]" aria-describedby="emailHelp" autofocus="true" placeholder="Email">
           </div>
         </div>
 
@@ -27,9 +27,10 @@
           <label class="control-label"  for="password">Mot de passe</label>
           <div class="controls">
             <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <em>(<%= @minimum_password_length %> caractères minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "off" %>
+            <input type="password" class="form-control" id="user_password" name="user[password]" autocomplete="off" placeholder="Mot de passe">
+
           </div>
         </div>
 
@@ -37,12 +38,12 @@
           <!-- Password -->
           <label class="control-label"  for="password">Confirmation du mot de passe</label>
           <div class="controls">
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <input type="password" class="form-control" id="user_password_confirmation" name="user[password_confirmation]" autocomplete="off" placeholder="Confirmation du mot de passe">
           </div>
         </div>
-
+          </br>
         <div class="actions">
-          <%= f.submit "Inscription" %>
+          <button type="submit" class="btn btn-primary">Inscription</button>
         </div>
       <% end %>
     </fieldset>

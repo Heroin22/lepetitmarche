@@ -1,4 +1,51 @@
 <div class="container">
+
+  <div class="well">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <input type="text" name="q" value="" maxlength="500" id="searchtext" class="form-control" placeholder="Que recherchez-vous ?">
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-group">
+          <select class="form-control" id="sel1">
+            <option>Catégories</option>
+            <option>Automobile</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Rechercher</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <select class="form-control">
+          <option>Départements</option>
+          <option>Ille-et-Vilaine</option>
+          <option>Finistére</option>
+          <option>Manche</option>
+          <option>Calvados</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control">
+          <option>Villes</option>
+          <option>Ille-et-Vilaine</option>
+          <option>Finistére</option>
+          <option>Manche</option>
+          <option>Calvados</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <% @ads.each do |ad| %>
         <div class="col-md-4">
