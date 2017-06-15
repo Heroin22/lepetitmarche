@@ -124,3 +124,15 @@ $( document ).ready(function() {
 
 });
 
+
+
+function selectRegion (){
+    var depId = $("#region :selected").val();
+    console.log(depId);
+    /*$.ajax({
+        url: "test.html",
+        context: document.body
+    }).success(function() {
+        $( this ).addClass( "done" );
+    });*/
+}

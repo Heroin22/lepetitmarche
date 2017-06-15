@@ -3,7 +3,11 @@ Rails.application.routes.draw do
 
   get 'annonces', :to=>'ad#listAd', :as=> :listAd
 
+  get 'annonce', :to=>'ad#detailAd', :as=> :detailAd
+
   get 'ajouter', :to=>'ad#newAd', :as=> :createAd
+
+  post 'ajouter', :to=>'ad#createAd', :as=> :newAdAction
 
   get 'rechercher', :to=>'ad#findAd', :as=> :findAd
 

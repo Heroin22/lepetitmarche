@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading"><%= @ad.title %></div>
+          <div class="panel-body">
+            <p><img class="img-responsive center-block imgPersoGrand" src="/data/<%= @ad.image %>" alt="image"/></p>
+            <ul class="list-group">
+              <li class="list-group-item"><span class="glyphicon glyphicon-globe"></span> <b>Lieu : </b> <%= @region.departement_nom %> > <%= @city.ville_nom_reel %></li>
+              <li class="list-group-item"><span class="glyphicon glyphicon-th-large"></span> <b>Catégorie : </b><%= @category.name %></li>
+              <li class="list-group-item"><span class="glyphicon glyphicon-piggy-bank"></span> <b>Prix : </b><%= @ad.price %> €</li>
+            </ul>
+            <p><%= @ad.description %></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
