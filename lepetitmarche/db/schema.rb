@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519120221) do
+ActiveRecord::Schema.define(version: 20170615120520) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "region"
@@ -32,6 +32,49 @@ ActiveRecord::Schema.define(version: 20170519120221) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  create_table "cities", force: :cascade do |t|
+    t.integer "ville_id"
+    t.string  "ville_departement"
+    t.string  "ville_slug"
+    t.string  "ville_nom"
+    t.string  "ville_nom_simple"
+    t.string  "ville_nom_reel"
+    t.string  "ville_nom_soundex"
+    t.string  "ville_nom_metaphone"
+    t.string  "ville_code_postal"
+    t.string  "ville_commune"
+    t.string  "ville_code_commune"
+    t.integer "ville_arrondissement"
+    t.string  "ville_canton"
+    t.integer "ville_amdi"
+    t.integer "ville_population_2010"
+    t.integer "ville_population_1999"
+    t.integer "ville_population_2012"
+    t.integer "ville_densite_2010"
+    t.float   "ville_surface"
+    t.float   "ville_longitude_deg"
+    t.float   "ville_latitude_deg"
+    t.string  "ville_longitude_grd"
+    t.string  "ville_latitude_grd"
+    t.string  "ville_longitude_dms"
+    t.string  "ville_latitude_dms"
+    t.integer "ville_zmin"
+    t.integer "ville_zmax"
+  end
+
+  add_index "cities", ["ville_id"], name: "index_cities_on_ville_id", unique: true
+
+  create_table "departments", force: :cascade do |t|
+    t.integer "departement_id"
+    t.string  "departement_codes"
+    t.string  "departement_nom"
+    t.string  "departement_nom_uppercase"
+    t.string  "departement_slug"
+    t.string  "departement_nom_soundex"
+  end
+
+  add_index "departments", ["departement_id"], name: "index_departments_on_departement_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "pseudo",                 default: "", null: false

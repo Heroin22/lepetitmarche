@@ -1,18 +1,52 @@
 <div class="container">
   <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-offset-3 col-md-6">
+        <h3>Nouvelle annonce</h3>
         <form>
           <div class="form-group">
-            <label for="region">Région : </label>
-            <input type="text" class="form-control" id="region">
+            <label for="region">Département : </label>
+            <select class="form-control" id="region">
+              <% @department.each do |dep| %>
+                  <option><%= dep.departement_nom %></option>
+              <% end %>
+            </select>
           </div>
-          <div class="form-group">
 
-          </div>
           <div class="form-group">
-            <label for="titre">Titre:</label>
-            <input type="text" class="form-control" id="titre">
+            <label for="city">Ville :</label>
+            <select class="form-control" id="region">
+              <% @city.each do |cit| %>
+                  <option><%= cit.ville_nom_simple %></option>
+              <% end %>
+            </select>
           </div>
+
+          <div class="form-group">
+            <label for="category">Catégorie : </label>
+            <select class="form-control" id="category">
+              <% @category.each do |cat| %>
+                    <option><%= cat.name %></option>
+              <% end %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" class="form-control" id="title">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea class="form-control" rows="5" id="description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Prix :</label>
+            <input type="number" class="form-control" id="price">
+          </div>
+
+          <input type="hidden" name="userId" id="userId" value="1"> <!-- CHANGER LE USER ID-->
+
           <button type="submit" class="btn btn-default">Valider</button>
         </form>
       </div>
