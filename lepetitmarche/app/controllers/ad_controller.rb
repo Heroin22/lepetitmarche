@@ -14,7 +14,7 @@ class AdController < ApplicationController
   end
 
   def newAd
-    @category = Category.all
+    @categoriesP = Category.find_by_sql("SELECT * FROM categories WHERE categories.parent_category IS NULL")
     @department = Department.all
     @city = City.all
   end

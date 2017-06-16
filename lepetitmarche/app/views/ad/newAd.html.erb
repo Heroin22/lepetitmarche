@@ -24,8 +24,12 @@
             <div class="form-group">
               <label for="category">Catégorie : </label>
               <select class="form-control" id="category" name="category">
-                <% @category.each do |cat| %>
-                      <option value="<%= cat.id%>"><%= cat.name %></option>
+                <% @categoriesP.each do |catP| %>
+                    <optgroup label="<%= catP.name %>">
+                      <% Category.find_by_sql("SELECT * FROM categories WHERE categories.parent_category = #{catP.id}").each do |catE| %>
+                          <option value="<%= catE.id%>"><%= catE.name %></option>
+                      <% end %>
+                    </optgroup>
                 <% end %>
               </select>
             </div>
