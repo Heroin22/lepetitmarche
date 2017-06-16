@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'annonce', :to=>'ad#detailAd', :as=> :detailAd
 
+  post 'annonce/getDonneesAd', :to=>'ad#getDonneesAd'
+
   get 'ajouter', :to=>'ad#newAd', :as=> :createAd
 
   post 'ajouter', :to=>'ad#createAd', :as=> :newAdAction
@@ -17,15 +19,9 @@ Rails.application.routes.draw do
 
   #post 'formulaire', :to=>'forms#create', :as=> :formulaireP
 
-  get 'annonces/trieDateUp' => 'ad#trieDateUp'
-
-  get 'annonces/trieDateDown' => 'ad#trieDateDown'
-
-  get 'annonces/triePriceDown' => 'ad#triePriceDown'
-
-  get 'annonces/triePriceUp' => 'ad#triePriceUp'
-
   post 'annonces/search' => 'ad#search'
+
+  post 'annonces/searchWithSort' => 'ad#searchWithSort'
 
   post 'annonces/getVilleByDep' => 'ad#getVilleByDep'
 

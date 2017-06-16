@@ -12,10 +12,13 @@
       <div class="col-md-3">
         <div class="form-group">
           <select class="form-control" id="categories">
-            <option value="">Catégories</option>
-            <option value="2">Automobile</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value=""> --- Catégories --- </option>
+            <% @categoriesP.each do |catP| %>
+                <option value="<%= catP.id%>"><%= catP.name %></option>
+                <% Category.find_by_sql("SELECT * FROM categories WHERE categories.parent_category = #{catP.id}").each do |catE| %>
+                    <option value="<%= catE.id%>">&emsp;<%= catE.name %></option>
+                <% end %>
+            <% end %>
           </select>
         </div>
       </div>
@@ -27,20 +30,16 @@
     </div>
     <div class="row">
       <div class="col-md-3">
-        <select class="form-control" id="region">
-          <option value="">Départements</option>
+        <select class="form-control" id="regionRecherche">
+          <option value=""> --- Départements --- </option>
           <% @department.each do |dep| %>
               <option value="<%= dep.departement_codes %>"><%= dep.departement_nom %></option>
           <% end %>
         </select>
       </div>
       <div class="col-md-3">
-        <select class="form-control" id="ville">
-          <option value="">Villes</option>
-          <option value="1">Ille-et-Vilaine</option>
-          <option value="2">Finistére</option>
-          <option value="3">Manche</option>
-          <option value="4">Calvados</option>
+        <select class="form-control" id="villeRecherche">
+          <option value=""> --- Villes --- </option>
         </select>
       </div>
     </div>
