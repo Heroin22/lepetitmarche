@@ -26,10 +26,13 @@ class AdController < ApplicationController
     @title = params[:title]
     @description = params[:description]
     @price = params[:price]
-    @image = params[:image]['datafile'].original_filename
-    Datafile.save(params[:image])
+    if params[:image] != nil
+      @image = params[:image]['datafile'].original_filename
+      Datafile.save(params[:image])
+      Ad.create({:region => @region, :city => @city, :category => @category, :title => @title, :description => @description, :price => @price, :image => @image, :userId => @userId});
+
+    end
     @userId = params[:userId]
-    Ad.create({:region => @region, :city => @city, :category => @category, :title => @title, :description => @description, :price => @price, :image => @image, :userId => @userId});
     redirect_to(listAd_path)
   end
 
@@ -37,9 +40,42 @@ class AdController < ApplicationController
   end
 
   def modifyAd
+    detailAd
+    @categoriesP = Category.find_by_sql("SELECT * FROM categories WHERE categories.parent_category IS NULL")
+    @department = Department.all
+    @city = City.all
+  end
+
+  def updateAd
+    @region = params[:region]
+    @city = params[:city]
+    @category = params[:category]
+    @title = params[:title]
+    @description = params[:description]
+    @price = params[:price]
+    @userId = params[:userId]
+    @adId = params[:adId]
+    if params[:image] != nil
+      @image = params[:image]['datafile'].original_filename
+      Datafile.save(params[:image])
+      Ad.update(@adId, :region => @region, :city => @city,:category => @category, :title => @title, :description => @description, :price => @price, :image => @image, :userId => @userId)
+      redirect_to(mesAnnonce_path)
+    else
+      Ad.update(@adId, :region => @region, :city => @city,:category => @category, :title => @title, :description => @description, :price => @price, :userId => @userId)
+      redirect_to(mesAnnonce_path)
+    end
+
   end
 
   def deleteAd
+    @adId = params[:id]
+    Ad.destroy(@adId)
+    redirect_to(mesAnnonce_path)
+  end
+
+  def mesAnnonce
+    p current_user.id
+    @ad = Ad.where("userId = :userId",{:userId => "#{current_user.id}"})
   end
 
   def getDonneesAd

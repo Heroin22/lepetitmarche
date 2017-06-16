@@ -1,3 +1,80 @@
-<%= render 'layouts/header' %>
-<h1>Ad#modifyAd</h1>
-<p>Find me in app/views/ad/modifyAd.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h3>Modifier mon annonce</h3>
+      <%= form_tag 'update', method: "post", multipart: true do %>
+
+          <div class="form-group">
+            <label for="region">Département : </label>
+            <select class="form-control" id="regionModify" name="region">
+              <option value=""> --- Département ---</option>
+              <% @department.each do |dep| %>
+                  <% if dep.departement_codes == @ad.region%>
+                    <option value="<%= dep.departement_codes%>" selected><%= dep.departement_nom %></option>
+                  <% else %>
+                      <option value="<%= dep.departement_codes%>"><%= dep.departement_nom %></option>
+                  <% end %>
+              <% end %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="city">Ville :</label>
+            <select class="form-control" id="villeModify" name="city">
+              <option value=""> --- Villes ---</option>
+              <% @city.each do |city| %>
+                  <% if city.ville_id == Integer(@ad.city)%>
+                      <option value="<%= city.ville_id%>" selected><%= city.ville_nom_simple %></option>
+                  <% else %>
+
+                  <% end %>
+              <% end %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Catégorie : </label>
+            <select class="form-control" id="category" name="category">
+              <% @categoriesP.each do |catP| %>
+                  <optgroup label="<%= catP.name %>">
+                    <% Category.find_by_sql("SELECT * FROM categories WHERE categories.parent_category = #{catP.id}").each do |catE| %>
+                        <% if catE.id == @ad.category %>
+                            <option value="<%= catE.id%>" selected><%= catE.name %></option>
+                        <% else %>
+                            <option value="<%= catE.id%>"><%= catE.name %></option>
+                        <% end %>
+                    <% end %>
+                  </optgroup>
+              <% end %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="title">Titre :</label>
+            <input type="text" class="form-control" id="title" value="<%= @ad.title %>" name="title">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea class="form-control" rows="5" id="description" name="description"><%= @ad.description %></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Prix :</label>
+            <input type="number" class="form-control" id="price" value="<%= @ad.price %>" name="price">
+          </div>
+
+          <div class="form-group">
+            <label for="image">Choisir une image :</label>
+            <%= file_field 'image', 'datafile' %>
+          </div>
+
+          <input type="hidden" name="userId" id="userId" value="<%= current_user.id %>">
+          <input type="hidden" name="adId" id="adId" value="<%= @ad.id %>">
+
+          <%= link_to 'Retour', mesAnnonce_path, class: 'button alt' %>
+          <button type="submit" name="submit" class="btn btn-default">Valider</button>
+      <% end %>
+    </div>
+  </div>
+</div>

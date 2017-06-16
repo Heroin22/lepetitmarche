@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Mes annonces </h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Titre</th>
+      <th>Prix</th>
+      <th>Date de création</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @ad.each_with_index do |ad, index| %>
+        <tr>
+          <th scope="row"><%= index+1 %></th>
+          <td><%= ad.title %></td>
+          <td><%= ad.price %> €</td>
+          <td><%= ad.created_at %></td>
+          <td><a href="<%= modifyAd_path %>?id=<%= ad.id %>">Modifier</a> | <a href="<%= deleteAd_path %>?id=<%= ad.id %>">Supprimer</a></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

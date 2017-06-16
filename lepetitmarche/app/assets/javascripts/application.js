@@ -209,4 +209,8 @@ $( document ).ready(function() {
     $("#regionRecherche").change(function () {
         afficheVilleHtml("regionRecherche","villeRecherche");
     })
+
+    $("#regionModify").change(function () {
+        afficheVilleHtml("regionModify","villeModify");
+    })
 });

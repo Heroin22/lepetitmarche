@@ -9,13 +9,17 @@ Rails.application.routes.draw do
 
   get 'ajouter', :to=>'ad#newAd', :as=> :createAd
 
+  get 'mes-annonce', :to=>'ad#mesAnnonce', :as=> :mesAnnonce
+
   post 'ajouter', :to=>'ad#createAd', :as=> :newAdAction
 
   get 'rechercher', :to=>'ad#findAd', :as=> :findAd
 
-  get 'modifier', :to=>'ad#modifyAd', :as=> :modifyAd
+  get 'mes-annonces/modifier', :to=>'ad#modifyAd', :as=> :modifyAd
 
-  get 'supprimer', :to=>'ad#deleteAd', :as=> :deleteAd
+  post 'mes-annonces/update', :to=>'ad#updateAd', :as=> :UpdateAd
+
+  get 'mes-annonces/supprimer', :to=>'ad#deleteAd', :as=> :deleteAd
 
   #post 'formulaire', :to=>'forms#create', :as=> :formulaireP
 
@@ -24,6 +28,10 @@ Rails.application.routes.draw do
   post 'annonces/searchWithSort' => 'ad#searchWithSort'
 
   post 'annonces/getVilleByDep' => 'ad#getVilleByDep'
+
+  post 'mes-annonces/annonces/getVilleByDep' => 'ad#getVilleByDep'
+
+
 
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
